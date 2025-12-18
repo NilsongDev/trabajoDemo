@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infografía ASMAR: Gestión de RC y Requerimientos (SIGI) - RRHH</title>
+  <style>
+    :root{
+      --navy:#003366;
+      --steel:#607d8b;
+      --bg:#eef2f5;
+      --card:#ffffff;
+      --line:#d9e1e8;
+      --ok:#2e7d32;
+      --alert:#d32f2f;
+      --soft:#f6f8fb;
+      --light:#e3f2fd;
+      --ink:#263238;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      padding:20px;
+      background:var(--bg);
+      font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color:#333;
+    }
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--card);
+      border-top: 10px solid var(--navy);
+      box-shadow: 0 4px 16px rgba(0,0,0,.16);
+    }
+    header{
+      padding:24px 28px;
+      border-bottom:2px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      align-items:flex-start;
+    }
+    .title{
+      margin:0;
+      color:var(--navy);
+      font-weight:900;
+      letter-spacing:.3px;
+      text-transform:uppercase;
+      font-size:1.55rem;
+      line-height:1.1;
+    }
+    .subtitle{
+      margin:8px 0 0;
+      color:var(--steel);
+      font-weight:700;
+      max-width: 80ch;
+    }
+    .tag{
+      background:var(--navy);
+      color:#fff;
+      padding:8px 12px;
+      border-radius:8px;
+      font-size:.82rem;
+      font-weight:800;
+      height:fit-content;
+      white-space:nowrap;
+    }
+
+    .content{ padding:22px 28px 30px; }
+
+    h2{
+      margin:20px 0 10px;
+      padding-bottom:10px;
+      border-bottom:1px solid var(--line);
+      color:var(--navy);
+      font-size:1.2rem;
+    }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:#fff;
+      padding:14px 14px;
+      margin-top:10px;
+    }
+    .card.soft{ background:var(--soft); }
+    .card.light{ background:var(--light); border-left:6px solid var(--navy); }
+
+    p{ margin:8px 0; line-height:1.45; }
+    ul{ margin:8px 0 0; padding-left:18px; }
+    li{ margin:6px 0; }
+
+    /* Bloques tipo infografía */
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top:10px;
+    }
+    .mini{
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:12px;
+      background:#fff;
+    }
+    .mini .ico{ font-size:1.6rem; display:block; margin-bottom:8px; }
+    .mini b{ color:var(--ink); }
+
+    /* Alternativas */
+    .alts{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top:10px;
+    }
+    .alt{
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:12px;
+      background:#fff;
+    }
+    .alt.reco{
+      border-left:6px solid var(--ok);
+      background:#f1f8e9;
+    }
+    .alt h3{
+      margin:0 0 6px;
+      color:var(--ink);
+      font-size:1rem;
+    }
+    .alt small{ color:#546e7a; }
+
+    /* Flujo simple */
+    .flow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .step{
+      flex:1;
+      min-width:160px;
+      background:var(--navy);
+      color:#fff;
+      border-radius:10px;
+      padding:10px 12px;
+    }
+    .step b{
+      display:block;
+      padding-bottom:6px;
+      margin-bottom:6px;
+      border-bottom:1px solid rgba(255,255,255,.22);
+    }
+    .step span{ opacity:.95; font-size:.92rem; }
+
+    /* Gráficos simples (barras) */
+    .two{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:10px;
+    }
+    .chart{
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:12px;
+      background:#fff;
+    }
+    .barRow{ margin-top:10px; }
+    .barTop{
+      display:flex;
+      justify-content:space-between;
+      font-weight:800;
+      color:var(--ink);
+      font-size:.95rem;
+    }
+    .barBg{
+      height:10px;
+      background:#e9eef3;
+      border:1px solid #d6dde5;
+      border-radius:999px;
+      margin-top:6px;
+      overflow:hidden;
+    }
+    .barFill{
+      height:100%;
+      border-radius:999px;
+    }
+    .fill-red{ background: var(--alert); }
+    .fill-blue{ background: var(--navy); }
+    .fill-green{ background: var(--ok); }
+
+    /* Checklist objetivos */
+    .checks{
+      list-style:none;
+      padding:0;
+      margin:10px 0 0;
+      display:grid;
+      gap:8px;
+    }
+    .checks li{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:12px;
+      padding:10px 12px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color:#546e7a;
+    }
+    .tick{ color:var(--ok); font-weight:900; }
+
+    .source{
+      font-size:.92rem;
+      color:#546e7a;
+      margin-top:10px;
+    }
+    .source a{ color:var(--navy); text-decoration:none; }
+    .source a:hover{ text-decoration:underline; }
+
+    @media(max-width: 860px){
+      .grid3, .alts, .two{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1 class="title">Gestión de Requerimientos y Retrasos</h1>
+        <p class="subtitle">
+          Caso ASMAR (RRHH / Departamento de Personas): solicitudes se gestionan en <b>SIGI</b> mediante <b>RC (Registro de Cambio)</b>,
+          con <b>reunión de inicio</b> y <b>acta de trabajo</b> previa. El desafío está en lograr claridad y control de alcance para evitar retrasos.
+        </p>
+      </div>
+      <div class="tag">DEPTO. INFORMÁTICA · RRHH</div>
+    </header>
+
+    <div class="content">
+
+      <!-- 1 -->
+      <h2>1) Detección del problema</h2>
+      <div class="card light">
+        <p>
+          Los requerimientos para nuevas aplicaciones o mejoras se solicitan formalmente por <b>SIGI</b> a través de un <b>RC</b>,
+          normalmente respaldados por una <b>reunión</b> y un <b>acta de trabajo</b>. Aun así, los proyectos se retrasan cuando:
+        </p>
+        <ul>
+          <li>no existe <b>claridad completa</b> del usuario sobre lo que necesita (reglas, alcance, criterios),</li>
+          <li>no se logra <b>consenso a tiempo</b> por limitación de reuniones y disponibilidad,</li>
+          <li>se agregan <b>extras durante el desarrollo</b> (cambios de alcance).</li>
+        </ul>
+        <p>
+          <b>Resultado:</b> aumenta el trabajo, se extiende el plazo y sube el <b>costo de producción</b> de la aplicación
+          (más horas de análisis, desarrollo, pruebas y ajustes).
+        </p>
+      </div>
+
+      <!-- 2 -->
+      <h2>2) Contextualización y causas</h2>
+      <div class="card soft">
+        <div class="grid3">
+          <div class="mini">
+            <span class="ico">📝</span>
+            <b>Acta incompleta</b>
+            <p>Falta especificación: alcance, reglas de negocio y criterios de aceptación.</p>
+          </div>
+          <div class="mini">
+            <span class="ico">🕒</span>
+            <b>Poco tiempo de aclaración</b>
+            <p>Reuniones insuficientes para resolver dudas críticas antes de construir.</p>
+          </div>
+          <div class="mini">
+            <span class="ico">➕</span>
+            <b>Extras en construcción</b>
+            <p>Se agregan funcionalidades “ya que estamos”, y el plazo paga el costo.</p>
+          </div>
+        </div>
+
+        <p style="margin-top:10px;">
+          <b>Lectura negocio:</b> el atraso no es “hacer software lento”, sino <b>gestión del requerimiento</b>:
+          definición + acuerdos + control de cambios.
+        </p>
+      </div>
+
+      <!-- 3 -->
+      <h2>3) Generación y diseño de alternativas</h2>
+      <div class="alts">
+        <div class="alt">
+          <h3>A) Acta estándar (checklist)</h3>
+          <small>Acta con campos mínimos obligatorios.</small>
+          <p><b>Pro:</b> más claridad inicial. <b>Contra:</b> no frena cambios posteriores.</p>
+        </div>
+
+        <div class="alt reco">
+          <h3>B) Definir + Congelar + Controlar</h3>
+          <small>Alcance definido, criterios y control de cambios.</small>
+          <p><b>Pro:</b> baja retrabajo y retrasa menos. <b>Contra:</b> requiere disciplina.</p>
+        </div>
+
+        <div class="alt">
+          <h3>C) Comité de cambios (rápido)</h3>
+          <small>Extras se aprueban con impacto (tiempo/costo).</small>
+          <p><b>Pro:</b> protege fecha. <b>Contra:</b> necesita sponsor del negocio.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <p>
+          <b>Solución propuesta:</b> <b>B + C</b>. Se define bien antes de construir y cualquier extra entra por evaluación
+          de impacto. Menos sorpresas, más control.
+        </p>
+
+        <h3>Flujo simple (SIGI + RC)</h3>
+        <div class="flow">
+          <div class="step"><b>1) RC en SIGI</b><span>Solicitud formal del área (RRHH).</span></div>
+          <div class="step"><b>2) Reunión + Acta</b><span>Objetivo, alcance y restricciones.</span></div>
+          <div class="step"><b>3) Definición</b><span>Reglas + criterios de aceptación.</span></div>
+          <div class="step"><b>4) Desarrollo</b><span>Construcción según lo acordado.</span></div>
+          <div class="step"><b>5) Cambios</b><span>Extras se aprueban con evaluacion de impacto.</span></div>
+          <div class="step"><b>6) Cierre RC</b><span>Entrega, validación y evidencia.</span></div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <h2>4) Objetivos</h2>
+      <div class="card soft">
+        <p>
+          Reducir retrasos asociados a definición y cambios de alcance, mejorando la coordinación
+          entre RRHH y TI mediante un proceso claro: <b>acta completa</b> + <b>criterios</b> + <b>control de cambios</b>.
+        </p>
+      </div>
+
+      <!-- 5 -->
+      <h2>5) Objetivo general</h2>
+      <div class="card light">
+        <p>
+          <b>Mejorar la predictibilidad de entrega</b> de desarrollos para RRHH, fortaleciendo el ciclo RC (SIGI)
+          con una definición inicial robusta y un control de cambios formal, reduciendo retrabajo y costo.
+        </p>
+      </div>
+
+      <!-- 6 -->
+      <h2>6) Objetivos específicos </h2>
+      <ul class="checks">
+        <li><span class="tick">✔</span> Lograr que <b>≥90%</b> de RC tenga <b>acta completa</b> (alcance + criterios) antes de desarrollar.</li>
+        <li><span class="tick">✔</span> Reducir el trabajo extra por “dudas tardías” en <b>~20%</b>.</li>
+        <li><span class="tick">✔</span> Asegurar que <b>100%</b> de extras pase por <b>control de cambios</b> (Tiempo Desarrollo/costo/Analisis).</li>
+      </ul>
+
+      <!-- GRÁFICOS -->
+      <h2>Gráficos </h2>
+      <div class="two">
+        <div class="chart">
+          <h3 style="margin:0;color:var(--ink);">Gráfico 1: Causas típicas del retraso</h3>
+
+          <div class="barRow">
+            <div class="barTop"><span>Definición/acta incompleta</span><span>40%</span></div>
+            <div class="barBg"><div class="barFill fill-red" style="width:40%"></div></div>
+          </div>
+
+          <div class="barRow">
+            <div class="barTop"><span>Tiempo limitado de reuniones</span><span>20%</span></div>
+            <div class="barBg"><div class="barFill fill-blue" style="width:20%"></div></div>
+          </div>
+
+          <div class="barRow">
+            <div class="barTop"><span>Extras (cambios de alcance)</span><span>30%</span></div>
+            <div class="barBg"><div class="barFill fill-red" style="width:30%"></div></div>
+          </div>
+
+          <div class="barRow">
+            <div class="barTop"><span>Formalidades RC / aprobaciones</span><span>10%</span></div>
+            <div class="barBg"><div class="barFill fill-blue" style="width:10%"></div></div>
+          </div>
+
+          <p class="source"><b>Fuente:</b> Diagnóstico interno (observación del ciclo RC y proyectos RRHH), ASMAR, 2025.</p>
+        </div>
+
+        <div class="chart">
+          <h3 style="margin:0;color:var(--ink);">Gráfico 2: Antes vs Después (meta)</h3>
+
+          <div class="barRow">
+            <div class="barTop"><span>Retrabajo (Antes)</span><span>55</span></div>
+            <div class="barBg"><div class="barFill fill-red" style="width:55%"></div></div>
+          </div>
+
+          <div class="barRow">
+            <div class="barTop"><span>Retrabajo (Después)</span><span>35</span></div>
+            <div class="barBg"><div class="barFill fill-green" style="width:35%"></div></div>
+          </div>
+
+          <div class="barRow">
+            <div class="barTop"><span>Extras sin control (Antes)</span><span>50</span></div>
+            <div class="barBg"><div class="barFill fill-red" style="width:50%"></div></div>
+          </div>
+
+          <div class="barRow">
+            <div class="barTop"><span>Extras sin control (Después)</span><span>10</span></div>
+            <div class="barBg"><div class="barFill fill-green" style="width:10%"></div></div>
+          </div>
+
+          <p class="source"><b>Fuente:</b> Metas de mejora definidas en la propuesta (gestión de requerimientos RRHH), 2025.</p>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <h2>7) Justificación de la solución propuesta</h2>
+      <div class="card soft">
+        <p>
+          Con SIGI y RC ya existe un canal formal; el valor agregado está en <b>mejorar la definición inicial</b> y
+          <b>controlar el alcance</b>. Esto disminuye iteraciones, baja el retrabajo y hace la entrega más predecible.
+        </p>
+        <ul>
+          <li><b>Más claridad:</b> acta + criterios reducen ambigüedad.</li>
+          <li><b>Menos retraso:</b> cambios se gestionan con impacto, no “por goteo”.</li>
+          <li><b>Mejor costo:</b> cada extra se decide con tiempo/costo sobre la mesa.</li>
+        </ul>
+      </div>
+
+      <!-- FUENTES -->
+      <h2>Fuentes</h2>
+      <div class="card">
+        <ul>
+          <li><b>The Scrum Guide (2020):</b> Schwaber & Sutherland (refinamiento y gestión de backlog).</li>
+          <li><b>ITIL 4 Foundation:</b> prácticas de gestión de solicitudes y servicios.</li>
+          <li><b>Diagnóstico interno (ASMAR, 2025):</b> observación del proceso RC en SIGI y proyectos del Departamento de Personas (RRHH).</li>
+        </ul>
+        <p class="source">
+          Referencias públicas:
+          <a href="https://scrumguides.org/" target="_blank" rel="noopener">scrumguides.org</a>
+          ·
+          <a href="https://www.axelos.com/best-practice-solutions/itil" target="_blank" rel="noopener">AXELOS ITIL</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
